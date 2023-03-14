@@ -3,7 +3,7 @@ redirects: on
 
 nuget FSharp.Formatting
 nuget FSharp.Core
-github fsprojects/reveal.js:master
+github hakimel/reveal.js:master
 
 group Build
   source https://nuget.org/api/v2    
