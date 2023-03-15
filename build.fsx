@@ -172,13 +172,29 @@ Target "PublishNuGet" (fun _ ->
 // --------------------------------------------------------------------------------------
 // Generate the documentation
 
+let executeFSIFromToolsPackageWithArgs workdir script (args:string list) =
+    let workDir = Environment.CurrentDirectory
+    try
+        let path = Fake.EnvironmentHelper.normalizePath workdir
+        Environment.CurrentDirectory <- path
+        let fsiPath = __SOURCE_DIRECTORY__ @@ "packages" @@ "build" @@ "FSharp.Compiler.Tools" @@ "tools" @@ "fsi.exe"
+        if not <| File.Exists(fsiPath) then
+            failwithf "FSI not found"
+        let argsConcatenated = String.Join(" ", script :: args)
+        Fake.ProcessHelper.ExecProcess (fun (p:Diagnostics.ProcessStartInfo) -> 
+            p.FileName <- fsiPath
+            p.Arguments <- argsConcatenated
+        ) (TimeSpan.FromMinutes(3.0)) = 0
+    finally
+        Environment.CurrentDirectory <- workDir
+
 Target "GenerateReferenceDocs" (fun _ ->
-    if not <| executeFSIWithArgs "docs/tools" "generate.fsx" ["--define:RELEASE"; "--define:REFERENCE"] [] then
+    if not <| executeFSIFromToolsPackageWithArgs "docs/tools" "generate.fsx" ["--define:RELEASE"; "--define:REFERENCE"] then
       failwith "generating reference documentation failed"
 )
 
 let generateHelp fail =
-    if executeFSIWithArgs "docs/tools" "generate.fsx" ["--define:RELEASE"; "--define:HELP"] [] then
+    if executeFSIFromToolsPackageWithArgs "docs/tools" "generate.fsx" ["--define:RELEASE"; "--define:HELP"] then
         traceImportant "Help generated"
     else
         if fail then
@@ -201,8 +217,8 @@ Target "GenerateHelp" (fun _ ->
 
 
 Target "GenerateSlides" (fun _ ->
-    if executeFSIWithArgs "docs/tools" "createSlides.fsx" [] [] then
-        traceImportant "Slides generated"    
+    if executeFSIFromToolsPackageWithArgs "docs/tools" "createSlides.fsx" [] then
+        traceImportant "Slides generated"
 )
 
 

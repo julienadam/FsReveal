@@ -15,6 +15,7 @@ GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2
     FAKE (4.64.18)
+    FSharp.Compiler.Tools (10.2.3)
     Microsoft.Bcl (1.1.10) - restriction: && (< net45) (< portable-win81+wpa81) (< win8)
       Microsoft.Bcl.Build (>= 1.0.14)
     Microsoft.Bcl.Build (1.0.21) - import_targets: false, restriction: && (< net45) (< portable-win81+wpa81) (< win8)
