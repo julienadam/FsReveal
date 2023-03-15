@@ -8,6 +8,7 @@ NUGET
       FSharpVSPowerTools.Core (>= 2.3 < 2.4)
     FSharpVSPowerTools.Core (2.3)
       FSharp.Compiler.Service (>= 2.0.0.3)
+    jQuery (1.8.3)
 GITHUB
   remote: hakimel/reveal.js
     FULLPROJECT (724c4fee274914dd2d997b7584cf603c44e96c72)

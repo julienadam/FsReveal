@@ -13,6 +13,7 @@ module FsRevealHelper =
     let mutable RevealJsFolder = __SOURCE_DIRECTORY__
     let mutable TemplateFile = Path.Combine(__SOURCE_DIRECTORY__,"template.html")
     let mutable StyleFile = Path.Combine(__SOURCE_DIRECTORY__,"fsreveal.css")
+    let mutable Lib = Path.Combine(__SOURCE_DIRECTORY__, "lib")
 
 type FsReveal private() = 
     static let defaultFileName (other:FileInfo) optInput = 
@@ -26,6 +27,7 @@ type FsReveal private() =
             printfn "Creating %s.." outDir
         printfn "Copy reveal.js files from %s to %s" FsRevealHelper.RevealJsFolder outDir
         copyFiles (fun f -> f.ToLower().Contains("index.html")) FsRevealHelper.RevealJsFolder outDir
+        copyFiles (fun _ -> true) FsRevealHelper.Lib outDir
         // delete overhead
         File.Delete(outDir @@ "README.md")
         let di = DirectoryInfo(outDir @@ "test")

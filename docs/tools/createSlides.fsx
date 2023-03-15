@@ -10,7 +10,7 @@ open FsReveal
 let root = Path.Combine(__SOURCE_DIRECTORY__,"../../")
 let slidesDir = root @@ "/docs/slides"
 let outDir = root @@ "/docs/output/samples/"
-FsReveal.FsRevealHelper.RevealJsFolder <- Path.Combine(root,"paket-files/fsprojects/reveal.js")
+FsReveal.FsRevealHelper.RevealJsFolder <- Path.Combine(root,"paket-files/hakimel/reveal.js")
 FsReveal.FsRevealHelper.TemplateFile <- Path.Combine(root,"src/FsReveal/template.html")
 
 let targetFCIS = Path.Combine(root,@"packages/build/FAKE/tools/FSharp.Compiler.Interactive.Settings.dll")
@@ -20,7 +20,9 @@ if not (System.IO.File.Exists(targetFCIS)) then
 
 let copyStylesheet() =
     try
-        CopyFile (outDir @@ "css\custom.css") (slidesDir @@ "custom.css")
+        let customCss = outDir @@ "css\custom.css"
+        if File.Exists(customCss) then
+            CopyFile (outDir @@ "css\custom.css") (slidesDir @@ "custom.css")
     with
     | exn -> traceImportant <| sprintf "Could not copy stylesheet: %s" exn.Message
 

@@ -3,6 +3,7 @@ redirects: on
 
 nuget FSharp.Formatting
 nuget FSharp.Core
+nuget jQuery 1.8.3
 github hakimel/reveal.js:master
 
 group Build
