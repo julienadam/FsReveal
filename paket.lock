@@ -576,21 +576,10 @@ GITHUB
 GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2
-    FAKE (4.64.18)
+    FAKE (5.16)
     FSharp.Compiler.Tools (10.2.3)
-    Microsoft.Bcl (1.1.10) - restriction: && (< net45) (< portable-win81+wpa81) (< win8)
-      Microsoft.Bcl.Build (>= 1.0.14)
-    Microsoft.Bcl.Build (1.0.21) - import_targets: false, restriction: && (< net45) (< portable-win81+wpa81) (< win8)
-    Microsoft.Net.Http (2.2.29) - restriction: && (< net45) (< portable-win81+wpa81) (< win8)
-      Microsoft.Bcl (>= 1.1.10)
-      Microsoft.Bcl.Build (>= 1.0.14)
-    Octokit (0.20)
-      Microsoft.Net.Http  - restriction: && (< net45) (< portable-win81+wpa81) (< win8)
     SourceLink.Fake (1.1)
-GITHUB
-  remote: fsharp/FAKE
-    modules/Octokit/Octokit.fsx (c69914d99ae4e60820c156c0f82be6a3f45952a2)
-      Octokit (>= 0.20)
+
 GROUP Test
 NUGET
   remote: https://www.nuget.org/api/v2
