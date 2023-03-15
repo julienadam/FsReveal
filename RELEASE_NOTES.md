@@ -1,5 +1,13 @@
+### 1.4.0 - 15.03.2022
+* Use FSharp.Formatting 3.1.0 and hacked code to handle the new markdown ranges introduced in that version
+* Use NUnit 3 and NUnit3TestAdapter
+
 ### 1.3.2 - 15.03.2022
 * BUGFIX: Fixed build years later
+* Updated to latest reveal.js
+* Modified nuget package to only include relevant files from reveal.js
+* Package jquery so that it is not downloaded
+* Added Mermaid plugin
 
 ### 1.3.1 - 17.06.2016
 * BUGFIX: Position tooltips properly on all screens

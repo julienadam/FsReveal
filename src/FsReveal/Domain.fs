@@ -1,12 +1,7 @@
 ﻿namespace FsReveal
 
-open System
-open System.IO
-open System.Collections.Generic
-open System.Text
 open FSharp.Literate
 open FSharp.Markdown
-open FSharp.Markdown.Html
 
 type SlideData = 
     { Properties : Map<string,string>

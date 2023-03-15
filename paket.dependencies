@@ -1,7 +1,7 @@
 source https://nuget.org/api/v2
 redirects: on
 
-nuget FSharp.Formatting 2.14.4
+nuget FSharp.Formatting 3.1.0
 nuget FSharp.Core 4.7.2
 nuget jQuery 1.8.3
 github hakimel/reveal.js:master
@@ -16,6 +16,6 @@ group Build
 
 group Test
   source https://nuget.org/api/v2
-  nuget NUnit ~> 2 
-  nuget NUnit.Runners ~> 2
+  nuget NUnit ~> 3 
+  nuget NUnit3TestAdapter
   github forki/FsUnit FsUnit.fs

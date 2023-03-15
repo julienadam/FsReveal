@@ -3,7 +3,6 @@
 open FsReveal
 open FSharp.Literate
 open System.Text
-open System.IO
 open System
 
 let (|SpeakerNote|OtherLine|) (line : string) =
