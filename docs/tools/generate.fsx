@@ -2,7 +2,6 @@
 // Builds the documentation from `.fsx` and `.md` files in the 'docs/content' directory
 // (the generated documentation is stored in the 'docs/output' directory)
 // --------------------------------------------------------------------------------------
-
 // Binaries that have XML documentation (in a corresponding generated XML file)
 let referenceBinaries = [ "FsReveal.dll" ]
 // Web site location for the generated documentation
@@ -25,9 +24,9 @@ let info =
 #load "../../packages/FSharp.Formatting/FSharp.Formatting.fsx"
 #r "../../packages/build/FAKE/tools/NuGet.Core.dll"
 #r "../../packages/build/FAKE/tools/FakeLib.dll"
-open Fake
+
+open Fake.IO.FileSystem
 open System.IO
-open Fake.FileHelper
 open FSharp.Literate
 open FSharp.MetadataFormat
 
@@ -55,9 +54,11 @@ let layoutRoots =
 
 // Copy static files and CSS + JS from F# Formatting
 let copyFiles () =
-  CopyRecursive files output true |> Log "Copying file: "
+  printfn "Foo"
+  Fake.IO.Shell.copyRecursive output files true
+    |> Log "Copying file: "
   ensureDirectory (output @@ "content")
-  CopyRecursive (formatting @@ "styles") (output @@ "content") true 
+  Fake.IO.Shell.copyRecursive (output @@ "content") (formatting @@ "styles") true
     |> Log "Copying styles and scripts: "
 
 // When called from 'build.fsx', use the public project URL as <root>
@@ -73,11 +74,17 @@ let buildReference () =
   CleanDir (output @@ "reference")
   for lib in referenceBinaries do
     MetadataFormat.Generate
-      ( bin @@ lib, output @@ "reference", layoutRoots, 
+      ( bin @@ lib, 
+        //output @@ "reference", 
+        //layoutRoots,
         parameters = ("root", refRoot)::info,
         sourceRepo = githubLink @@ "tree/master",
         sourceFolder = __SOURCE_DIRECTORY__ @@ ".." @@ "..",
-        libDirs = [ bin ] )
+        libDirs = [ bin ]
+        //otherFlags = [],
+        //markDownComments = true,
+        //urlRangeHighlight = (fun _ _ _ -> "")
+      )
 
 #if RELEASE
 let docRoot = website
@@ -91,8 +98,11 @@ let buildDocumentation () =
   for dir in Seq.append [content] subdirs do
     let sub = if dir.Length > content.Length then dir.Substring(content.Length + 1) else "."
     Literate.ProcessDirectory
-      ( dir, docTemplate, output @@ sub, replacements = ("root", docRoot)::info,
-        layoutRoots = layoutRoots,
+      ( dir, 
+        //docTemplate, 
+        output @@ sub, 
+        replacements = ("root", docRoot)::info,
+        //layoutRoots = layoutRoots,
         generateAnchors = true )
 
 // Generate

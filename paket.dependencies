@@ -17,4 +17,5 @@ group Test
   source https://nuget.org/api/v2
   nuget NUnit ~> 3 
   nuget NUnit3TestAdapter
+  nuget NUnit.Console ~> 3
   github forki/FsUnit FsUnit.fs

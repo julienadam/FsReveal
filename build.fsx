@@ -6,6 +6,7 @@
 
 open Fake
 open Fake.Git
+open Fake.DotNet.Testing
 open Fake.AssemblyInfoFile
 open Fake.ReleaseNotesHelper
 open System
@@ -125,12 +126,17 @@ Target "Build" (fun _ ->
 // Run the unit tests using test runner
 
 Target "RunTests" (fun _ ->
-    !! testAssemblies
-    |> NUnit (fun p ->
-        { p with
-            DisableShadowCopy = true
-            TimeOut = TimeSpan.FromMinutes 20.
-            OutputFile = "TestResults.xml" })
+    let workDir = Environment.CurrentDirectory
+    try
+        !! testAssemblies
+        |> NUnit3.run (fun p ->
+            { p with
+                ShadowCopy = false
+                TimeOut = TimeSpan.FromMinutes 20.
+                WorkingDir = "tests/FsReveal.Tests"
+            })
+    finally
+        Environment.CurrentDirectory <- workDir
 )
 
 #if MONO
@@ -255,23 +261,23 @@ Target "ReleaseDocs" (fun _ ->
     Branches.push tempDocsDir
 )
 
-#load "paket-files/build/fsharp/FAKE/modules/Octokit/Octokit.fsx"
-open Octokit
+//#load "paket-files/build/fsharp/FAKE/modules/Octokit/Octokit.fsx"
+//open Octokit
 
-Target "Release" (fun _ ->
-    StageAll ""
-    Git.Commit.Commit "" (sprintf "Bump version to %s" release.NugetVersion)
-    Branches.push ""
+//Target "Release" (fun _ ->
+//    StageAll ""
+//    Git.Commit.Commit "" (sprintf "Bump version to %s" release.NugetVersion)
+//    Branches.push ""
 
-    Branches.tag "" release.NugetVersion
-    Branches.pushTag "" "origin" release.NugetVersion
+//    Branches.tag "" release.NugetVersion
+//    Branches.pushTag "" "origin" release.NugetVersion
     
-    // release on github
-    createClient (getBuildParamOrDefault "github-user" "") (getBuildParamOrDefault "github-pw" "")
-    |> createDraft gitOwner gitName release.NugetVersion (release.SemVer.PreRelease <> None) release.Notes 
-    |> releaseDraft
-    |> Async.RunSynchronously
-)
+//    // release on github
+//    createClient (getBuildParamOrDefault "github-user" "") (getBuildParamOrDefault "github-pw" "")
+//    |> createDraft gitOwner gitName release.NugetVersion (release.SemVer.PreRelease <> None) release.Notes 
+//    |> releaseDraft
+//    |> Async.RunSynchronously
+//)
 
 Target "BuildPackage" DoNothing
 
@@ -306,11 +312,11 @@ Target "All" DoNothing
 "GenerateHelp"
   ==> "KeepRunning"
     
-"ReleaseDocs"
-  ==> "Release"
+//"ReleaseDocs"
+//  ==> "Release"
 
-"BuildPackage"
-  ==> "PublishNuGet"
-  ==> "Release"
+//"BuildPackage"
+//  ==> "PublishNuGet"
+//  ==> "Release"
 
 RunTargetOrDefault "All"
