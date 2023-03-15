@@ -156,9 +156,66 @@ $ \Pr(A|B)=\frac{\Pr(B|A)\Pr(A)}{\Pr(B|A)\Pr(A)+\Pr(B|\neg A)\Pr(\neg A)} $
   
 ![When I show my boss that I've fixed a bug](http://www.topito.com/wp-content/uploads/2013/01/code-07.gif)
   
+---
+
 **When your regular expression returns what you expect:**
   
 ![When your regular expression returns what you expect](http://www.topito.com/wp-content/uploads/2013/01/code-03.gif)
   
 *from [The Reality of a Developer's Life - in GIFs, Of Course](http://server.dzone.com/articles/reality-developers-life-gifs)*
 
+***
+
+## Mermaid diagrams are now supported !
+
+---
+
+## Flow chart
+
+<div class="mermaid">
+    <pre>
+        %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
+        flowchart TD
+            A[Start] --> B{Is it?};
+            B -- Yes --> C[OK];
+            C --> D[Rethink];
+            D --> B;
+            B -- No ----> E[End];
+    </pre>
+</div>
+
+---
+
+## Sequence diagram
+
+<div class="mermaid">
+    <pre>
+        %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
+        sequenceDiagram
+            Alice->>John: Hello John, how are you?
+            John-->>Alice: Great!
+            Alice-)John: See you later!
+    </pre>
+</div>
+
+
+---
+
+## Git branch diagram
+
+<div class="mermaid">
+    <pre>
+        %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true }}}%%
+        gitGraph
+            commit
+            commit
+            branch develop
+            checkout develop
+            commit
+            commit
+            checkout main
+            merge develop
+            commit
+            commit
+    </pre>
+</div>
