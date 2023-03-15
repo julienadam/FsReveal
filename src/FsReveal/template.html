@@ -8,13 +8,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
-    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/{theme}.css" id="theme">
+    <script src="lib/js/jquery-1.8.0.js"></script>
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/{theme}.css">
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
     <link type="text/css" rel="stylesheet" href="fsharp.formatting/styles/style.css" />
     <link type="text/css" rel="stylesheet" href="fsharp.formatting/styles/deedle.css" />
     <link type="text/css" rel="stylesheet" href="css/custom.css" />
@@ -24,22 +22,21 @@
     <link rel="stylesheet" href="css/fsreveal.css">
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
+        if (window.location.search.match(/print-pdf/gi)) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/print/pdf.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
     </script>
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
     <script language="javascript" type="text/javascript">
-        function init()
-        {
-            websocket = new WebSocket("ws://"+window.location.host+"/websocket");
-            websocket.onmessage = function(evt) { location.reload(); };
+        function init() {
+            websocket = new WebSocket("ws://" + window.location.host + "/websocket");
+            websocket.onmessage = function (evt) { location.reload(); };
         }
         window.addEventListener("load", init, false);
     </script>
@@ -52,37 +49,31 @@
             {slides}
         </div>
     </div>
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.js"></script>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/search/search.js"></script>
     <script>
         // Add the nohighlight class and data-noescape attribute to code elements that have already been formatted by FSharp.Formatting
         $('pre.highlighted code').addClass('nohighlight').attr('data-noescape', '');
 
-        // Full list of configuration options available here:
-        // https://github.com/hakimel/reveal.js#configuration
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
         Reveal.initialize({
             controls: true,
             progress: true,
             history: true,
             center: true,
+            transition: '{transition}',
+            hash: true,
 
-            transition: '{transition}', // default/cube/page/concave/zoom/linear/fade/none
-
-            // Parallax scrolling
-            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-            // parallaxBackgroundSize: '2100px 900px',
-
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
-                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
-                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
-                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
-            ]
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath, RevealZoom, RevealSearch]
         });
-
     </script>
 </body>
 </html>
