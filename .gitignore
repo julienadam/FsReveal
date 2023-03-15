@@ -185,3 +185,5 @@ docs
 .fake/
 FSharp.Formatting.svclog
 _NCrunch*
+
+.vs/

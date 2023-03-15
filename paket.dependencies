@@ -1,5 +1,6 @@
+source temp
 source https://nuget.org/api/v2
 
-nuget FsReveal
+nuget FsReveal 1.3.2
 nuget FAKE
 nuget Suave
