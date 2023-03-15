@@ -1,3 +1,6 @@
+### 1.3.2 - 15.03.2022
+* BUGFIX: Fixed build years later
+
 ### 1.3.1 - 17.06.2016
 * BUGFIX: Position tooltips properly on all screens
 

@@ -5,13 +5,13 @@ open System.Reflection
 [<assembly: AssemblyTitleAttribute("FsReveal")>]
 [<assembly: AssemblyProductAttribute("FsReveal")>]
 [<assembly: AssemblyDescriptionAttribute("FsReveal parses markdown or F# script files and generates reveal.js slides.")>]
-[<assembly: AssemblyVersionAttribute("1.3.1")>]
-[<assembly: AssemblyFileVersionAttribute("1.3.1")>]
+[<assembly: AssemblyVersionAttribute("1.3.2")>]
+[<assembly: AssemblyFileVersionAttribute("1.3.2")>]
 do ()
 
 module internal AssemblyVersionInformation =
     let [<Literal>] AssemblyTitle = "FsReveal"
     let [<Literal>] AssemblyProduct = "FsReveal"
     let [<Literal>] AssemblyDescription = "FsReveal parses markdown or F# script files and generates reveal.js slides."
-    let [<Literal>] AssemblyVersion = "1.3.1"
-    let [<Literal>] AssemblyFileVersion = "1.3.1"
+    let [<Literal>] AssemblyVersion = "1.3.2"
+    let [<Literal>] AssemblyFileVersion = "1.3.2"
