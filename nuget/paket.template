@@ -13,6 +13,7 @@ files
     ../bin/FsReveal.* ==> lib/net40
     ../bin/FSharp.Compiler.Interactive.Settings.dll ==> lib/net40
     ../paket-files/hakimel/reveal.js/**/*.* ==> reveal.js
+    ../paket-files/zjffun/reveal.js-mermaid-plugin/plugin/mermaid ==> reveal.js/plugin/mermaid
     ../packages/jQuery/Content/Scripts/**.js ==> reveal.js/lib/js
     ../src/FsReveal/style.css ==> reveal.js/fsharp.formatting/styles
     ../src/FsReveal/tips.js ==> reveal.js/fsharp.formatting/styles

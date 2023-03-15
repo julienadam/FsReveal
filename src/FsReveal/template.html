@@ -56,6 +56,7 @@
     <script src="plugin/math/math.js"></script>
     <script src="plugin/zoom/zoom.js"></script>
     <script src="plugin/search/search.js"></script>
+    <script src="plugin/mermaid/mermaid.js"></script>
     <script>
         // Add the nohighlight class and data-noescape attribute to code elements that have already been formatted by FSharp.Formatting
         $('pre.highlighted code').addClass('nohighlight').attr('data-noescape', '');
@@ -72,7 +73,7 @@
             hash: true,
 
             // Learn about plugins: https://revealjs.com/plugins/
-            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath, RevealZoom, RevealSearch]
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealMath, RevealZoom, RevealSearch, RevealMermaid]
         });
     </script>
 </body>

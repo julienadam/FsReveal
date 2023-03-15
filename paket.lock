@@ -12,6 +12,8 @@ NUGET
 GITHUB
   remote: hakimel/reveal.js
     FULLPROJECT (724c4fee274914dd2d997b7584cf603c44e96c72)
+  remote: zjffun/reveal.js-mermaid-plugin
+    FULLPROJECT (3da2a9350f8d83cbda448e0071b069ede5e560b7)
 GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2
