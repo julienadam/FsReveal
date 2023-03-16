@@ -23,9 +23,12 @@ let info =
 
 #load "../../packages/FSharp.Formatting/FSharp.Formatting.fsx"
 #r "../../packages/build/FAKE/tools/NuGet.Core.dll"
-#r "../../packages/build/FAKE/tools/FakeLib.dll"
+// #r "../../packages/build/FAKE/tools/FakeLib.dll"
+#r "../../packages/build/Fake.IO.FileSystem/lib/netstandard2.0/Fake.IO.FileSystem.dll"
+#r "../../packages/build/Fake.Core.Trace/lib/netstandard2.0/Fake.Core.Trace.dll"
 
-open Fake.IO.FileSystem
+open Fake.IO
+open Fake.Core
 open System.IO
 open FSharp.Literate
 open FSharp.MetadataFormat
@@ -35,51 +38,51 @@ open FSharp.MetadataFormat
 #if RELEASE
 let root = website
 #else
-let root = "file://" + (__SOURCE_DIRECTORY__ @@ "../output")
+let root = "file://" + (__SOURCE_DIRECTORY__ + "../output")
 #endif
 
 // Paths with template/source/output locations
-let bin        = __SOURCE_DIRECTORY__ @@ "../../bin"
-let content    = __SOURCE_DIRECTORY__ @@ "../content"
-let output     = __SOURCE_DIRECTORY__ @@ "../output"
-let files      = __SOURCE_DIRECTORY__ @@ "../files"
-let templates  = __SOURCE_DIRECTORY__ @@ "templates"
-let formatting = __SOURCE_DIRECTORY__ @@ "../../packages/FSharp.Formatting/"
-let docTemplate = formatting @@ "templates/docpage.cshtml"
+let bin        = __SOURCE_DIRECTORY__ + "../../bin"
+let content    = __SOURCE_DIRECTORY__ + "../content"
+let output     = __SOURCE_DIRECTORY__ + "../output"
+let files      = __SOURCE_DIRECTORY__ + "../files"
+let templates  = __SOURCE_DIRECTORY__ + "templates"
+let formatting = __SOURCE_DIRECTORY__ + "../../packages/FSharp.Formatting/"
+let docTemplate = formatting + "templates/docpage.cshtml"
 
 // Where to look for *.csproj templates (in this order)
 let layoutRoots =
-  [ templates; formatting @@ "templates"
-    formatting @@ "templates/reference" ]
+  [ templates; formatting + "templates"
+    formatting + "templates/reference" ]
 
 // Copy static files and CSS + JS from F# Formatting
 let copyFiles () =
   printfn "Foo"
-  Fake.IO.Shell.copyRecursive output files true
-    |> Log "Copying file: "
-  ensureDirectory (output @@ "content")
-  Fake.IO.Shell.copyRecursive (output @@ "content") (formatting @@ "styles") true
-    |> Log "Copying styles and scripts: "
+  Shell.copyRecursive output files true
+    |> Trace.logItems "Copying file: "
+  Shell.mkdir (output + "content")
+  Shell.copyRecursive (output + "content") (formatting + "styles") true
+    |> Trace.logItems "Copying styles and scripts: "
 
 // When called from 'build.fsx', use the public project URL as <root>
 // otherwise, use the current 'output' directory.
 #if RELEASE
 let refRoot = website + "/.."
 #else
-let refRoot = "file://" + (__SOURCE_DIRECTORY__ @@ "../output")
+let refRoot = "file://" + (__SOURCE_DIRECTORY__ + "../output")
 #endif
 
 // Build API reference from XML comments
 let buildReference () =
-  CleanDir (output @@ "reference")
+  Shell.cleanDir (output + "reference")
   for lib in referenceBinaries do
     MetadataFormat.Generate
-      ( bin @@ lib, 
+      ( bin + "/" + lib, 
         //output @@ "reference", 
         //layoutRoots,
         parameters = ("root", refRoot)::info,
-        sourceRepo = githubLink @@ "tree/master",
-        sourceFolder = __SOURCE_DIRECTORY__ @@ ".." @@ "..",
+        sourceRepo = githubLink + "tree/master",
+        sourceFolder = __SOURCE_DIRECTORY__  + ".." + "..",
         libDirs = [ bin ]
         //otherFlags = [],
         //markDownComments = true,
@@ -89,7 +92,7 @@ let buildReference () =
 #if RELEASE
 let docRoot = website
 #else
-let docRoot = "file://" + (__SOURCE_DIRECTORY__ @@ "../output")
+let docRoot = "file://" + (__SOURCE_DIRECTORY__ + "../output")
 #endif
 
 // Build documentation from `fsx` and `md` files in `docs/content`
@@ -100,7 +103,7 @@ let buildDocumentation () =
     Literate.ProcessDirectory
       ( dir, 
         //docTemplate, 
-        output @@ sub, 
+        output + sub, 
         replacements = ("root", docRoot)::info,
         //layoutRoots = layoutRoots,
         generateAnchors = true )

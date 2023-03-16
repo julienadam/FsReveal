@@ -10,8 +10,14 @@ github zjffun/reveal.js-mermaid-plugin:main
 group Build
   source https://nuget.org/api/v2    
   nuget FAKE 5.16.0
+nuget Fake.Core.ReleaseNotes
+nuget Fake.Core.Target
+nuget Fake.DotNet.AssemblyInfoFile
+nuget Fake.DotNet.Paket
+nuget Fake.DotNet.Testing.NUnit
+  nuget Fake.IO.FileSystem
+nuget Fake.Runtime
   nuget FSharp.Compiler.Tools 10.2.3
-  nuget SourceLink.Fake 1.1
 
 group Test
   source https://nuget.org/api/v2

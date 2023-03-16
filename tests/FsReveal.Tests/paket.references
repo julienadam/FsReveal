@@ -1,7 +1,2 @@
 FSharp.Formatting
 FSharp.Core
-
-group Test
-NUnit
-NUnit3TestAdapter
-File:FsUnit.fs .

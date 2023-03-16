@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-run id="0" runstate="Runnable" testcasecount="11" result="Passed" total="11" passed="11" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="22" engine-version="3.16.3.0" clr-version="4.0.30319.42000" start-time="2023-03-15 21:01:44Z" end-time="2023-03-15 21:01:49Z" duration="4.716518">
+  <command-line><![CDATA["F:\coding\Projects\FsReveal\packages\test\NUnit.ConsoleRunner\tools\nunit3-console.exe" "@C:\TMP\Nidhogg\tmpB893.tmp"]]></command-line>
+  <test-suite type="Assembly" id="1-1016" name="FsReveal.Tests.dll" fullname="F:\coding\Projects\FsReveal\tests\FsReveal.Tests\bin\Release\FsReveal.Tests.dll" runstate="Runnable" testcasecount="11" result="Passed" start-time="2023-03-15T21:01:44.7921388Z" end-time="2023-03-15T21:01:49.0481344Z" duration="4.256041" total="11" passed="11" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="22">
+    <environment framework-version="3.13.3.0" clr-version="4.0.30319.42000" os-version="Microsoft Windows NT 10.0.22000.0" platform="Win32NT" cwd="F:\coding\Projects\FsReveal\tests\FsReveal.Tests" machine-name="NID" user="Nidhogg" user-domain="NID" culture="en-GB" uiculture="en-GB" os-architecture="x64" />
+    <settings>
+      <setting name="DisposeRunners" value="True" />
+      <setting name="DefaultTimeout" value="1200000" />
+      <setting name="WorkDirectory" value="tests/FsReveal.Tests" />
+      <setting name="ImageRuntimeVersion" value="4.0.30319" />
+      <setting name="ImageTargetFrameworkName" value=".NETFramework,Version=v4.8" />
+      <setting name="ImageRequiresX86" value="False" />
+      <setting name="ImageRequiresDefaultAppDomainAssemblyResolver" value="False" />
+      <setting name="TargetRuntimeFramework" value="net-4.8" />
+      <setting name="NumberOfTestWorkers" value="8" />
+    </settings>
+    <properties>
+      <property name="_PID" value="20852" />
+      <property name="_APPDOMAIN" value="domain-" />
+    </properties>
+    <test-suite type="TestSuite" id="1-1017" name="FsReveal" fullname="FsReveal" runstate="Runnable" testcasecount="11" result="Passed" start-time="2023-03-15T21:01:44.8051442Z" end-time="2023-03-15T21:01:49.0481344Z" duration="4.243102" total="11" passed="11" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="22">
+      <test-suite type="TestFixture" id="1-1000" name="FsRevealIntroTest" fullname="FsReveal.FsRevealIntroTest" classname="FsReveal.FsRevealIntroTest" runstate="Runnable" testcasecount="2" result="Passed" start-time="2023-03-15T21:01:44.8091699Z" end-time="2023-03-15T21:01:49.0151447Z" duration="4.206012" total="2" passed="2" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="3">
+        <test-case id="1-1002" name="can create intro twice" fullname="FsReveal.FsRevealIntroTest.can create intro twice" methodname="can create intro twice" classname="FsReveal.FsRevealIntroTest" runstate="Runnable" seed="1645718594" result="Passed" start-time="2023-03-15T21:01:44.8101687Z" end-time="2023-03-15T21:01:48.8681425Z" duration="4.058283" asserts="2">
+          <output><![CDATA[Copy reveal.js files from F:\coding\Projects\FsReveal\src\FsReveal to .
+Apply template : F:\coding\Projects\FsReveal\src\FsReveal\template.html
+Copy fsreveal.css style from F:\coding\Projects\FsReveal\src\FsReveal\fsreveal.css to .\css
+Copy reveal.js files from F:\coding\Projects\FsReveal\src\FsReveal to .
+Apply template : F:\coding\Projects\FsReveal\src\FsReveal\template.html
+Copy fsreveal.css style from F:\coding\Projects\FsReveal\src\FsReveal\fsreveal.css to .\css
+]]></output>
+        </test-case>
+        <test-case id="1-1001" name="can read FsReveal intro" fullname="FsReveal.FsRevealIntroTest.can read FsReveal intro" methodname="can read FsReveal intro" classname="FsReveal.FsRevealIntroTest" runstate="Runnable" seed="341095830" result="Passed" start-time="2023-03-15T21:01:48.8711433Z" end-time="2023-03-15T21:01:49.0131453Z" duration="0.142472" asserts="1">
+          <output><![CDATA[Copy reveal.js files from F:\coding\Projects\FsReveal\src\FsReveal to .
+Apply template : F:\coding\Projects\FsReveal\src\FsReveal\template.html
+Copy fsreveal.css style from F:\coding\Projects\FsReveal\src\FsReveal\fsreveal.css to .\css
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1-1013" name="PropertySpecs" fullname="FsReveal.PropertySpecs" classname="FsReveal.PropertySpecs" runstate="Runnable" testcasecount="2" result="Passed" start-time="2023-03-15T21:01:49.0171440Z" end-time="2023-03-15T21:01:49.0201466Z" duration="0.003146" total="2" passed="2" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="8">
+        <test-case id="1-1014" name="can read properties from markdown" fullname="FsReveal.PropertySpecs.can read properties from markdown" methodname="can read properties from markdown" classname="FsReveal.PropertySpecs" runstate="Runnable" seed="817675319" result="Passed" start-time="2023-03-15T21:01:49.0171440Z" end-time="2023-03-15T21:01:49.0191444Z" duration="0.002163" asserts="4" />
+        <test-case id="1-1015" name="uses default properties if nothing is specified in markdown" fullname="FsReveal.PropertySpecs.uses default properties if nothing is specified in markdown" methodname="uses default properties if nothing is specified in markdown" classname="FsReveal.PropertySpecs" runstate="Runnable" seed="1136629012" result="Passed" start-time="2023-03-15T21:01:49.0191444Z" end-time="2023-03-15T21:01:49.0201466Z" duration="0.000907" asserts="4" />
+      </test-suite>
+      <test-suite type="TestFixture" id="1-1005" name="SectionsSpecs" fullname="FsReveal.SectionsSpecs" classname="FsReveal.SectionsSpecs" runstate="Runnable" testcasecount="3" result="Passed" start-time="2023-03-15T21:01:49.0201466Z" end-time="2023-03-15T21:01:49.0311333Z" duration="0.011038" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="3">
+        <test-case id="1-1008" name="can generate html sections from markdown" fullname="FsReveal.SectionsSpecs.can generate html sections from markdown" methodname="can generate html sections from markdown" classname="FsReveal.SectionsSpecs" runstate="Runnable" seed="696253246" result="Passed" start-time="2023-03-15T21:01:49.0201466Z" end-time="2023-03-15T21:01:49.0211225Z" duration="0.000973" asserts="1" />
+        <test-case id="1-1006" name="can generate sections from markdown" fullname="FsReveal.SectionsSpecs.can generate sections from markdown" methodname="can generate sections from markdown" classname="FsReveal.SectionsSpecs" runstate="Runnable" seed="1355682097" result="Passed" start-time="2023-03-15T21:01:49.0211225Z" end-time="2023-03-15T21:01:49.0301322Z" duration="0.008806" asserts="1" />
+        <test-case id="1-1007" name="can generate sections from markdown without properties" fullname="FsReveal.SectionsSpecs.can generate sections from markdown without properties" methodname="can generate sections from markdown without properties" classname="FsReveal.SectionsSpecs" runstate="Runnable" seed="1580437963" result="Passed" start-time="2023-03-15T21:01:49.0301322Z" end-time="2023-03-15T21:01:49.0311333Z" duration="0.001171" asserts="1" />
+      </test-suite>
+      <test-suite type="TestFixture" id="1-1009" name="SlidePropertySpecs" fullname="FsReveal.SlidePropertySpecs" classname="FsReveal.SlidePropertySpecs" runstate="Runnable" testcasecount="3" result="Passed" start-time="2023-03-15T21:01:49.0311333Z" end-time="2023-03-15T21:01:49.0471558Z" duration="0.015700" total="3" passed="3" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="7">
+        <test-case id="1-1010" name="can read properties from slides" fullname="FsReveal.SlidePropertySpecs.can read properties from slides" methodname="can read properties from slides" classname="FsReveal.SlidePropertySpecs" runstate="Runnable" seed="1927804004" result="Passed" start-time="2023-03-15T21:01:49.0311333Z" end-time="2023-03-15T21:01:49.0361327Z" duration="0.004995" asserts="2" />
+        <test-case id="1-1011" name="can read properties from slides with list" fullname="FsReveal.SlidePropertySpecs.can read properties from slides with list" methodname="can read properties from slides with list" classname="FsReveal.SlidePropertySpecs" runstate="Runnable" seed="1119654779" result="Passed" start-time="2023-03-15T21:01:49.0361327Z" end-time="2023-03-15T21:01:49.0441522Z" duration="0.008095" asserts="4" />
+        <test-case id="1-1012" name="should not render slide properties" fullname="FsReveal.SlidePropertySpecs.should not render slide properties" methodname="should not render slide properties" classname="FsReveal.SlidePropertySpecs" runstate="Runnable" seed="1024799688" result="Passed" start-time="2023-03-15T21:01:49.0441522Z" end-time="2023-03-15T21:01:49.0471558Z" duration="0.002508" asserts="1" />
+      </test-suite>
+      <test-suite type="TestFixture" id="1-1003" name="SpeakerNotesSpecs" fullname="FsReveal.SpeakerNotesSpecs" classname="FsReveal.SpeakerNotesSpecs" runstate="Runnable" testcasecount="1" result="Passed" start-time="2023-03-15T21:01:49.0471558Z" end-time="2023-03-15T21:01:49.0481344Z" duration="0.001265" total="1" passed="1" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="1">
+        <test-case id="1-1004" name="can generate sections from markdown" fullname="FsReveal.SpeakerNotesSpecs.can generate sections from markdown" methodname="can generate sections from markdown" classname="FsReveal.SpeakerNotesSpecs" runstate="Runnable" seed="1755204631" result="Passed" start-time="2023-03-15T21:01:49.0471558Z" end-time="2023-03-15T21:01:49.0481344Z" duration="0.001214" asserts="1" />
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
